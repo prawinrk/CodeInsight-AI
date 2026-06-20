@@ -25,7 +25,12 @@ spec:
         - name: coding-service
 
           image: 768309077490.dkr.ecr.ap-south-1.amazonaws.com/codeinsight-coding-service:latest
-
+          env:
+            - name: GROQ_API_KEY
+              valueFrom:
+              secretKeyRef:
+              name: groq-secret
+              key: GROQ_API_KEY  
           ports:
             - containerPort: 5001
 ---
